@@ -1,0 +1,17 @@
+import pandas as pd
+f=pd.ExcelFile("D:/Git/Python/sales.xlsx")
+#print(f.sheet_names)
+sheet=f.parse('sales')
+#print(sheet)
+#print(type(sheet))
+#print(sheet.Invoice)
+#print(sheet.loc[0])
+#sheet.set_index("Customer",inplace=True)
+#print(sheet.loc["MMC Inc."])
+sheet.reset_index()
+#print(sheet["Invoice"])
+#print(sheet.loc[sheet["Invoice"] == 100])
+#print(sheet.loc[sheet["Invoice"].idxmax()])
+print(sheet.loc[sheet["Invoice"].idxmax()]["Customer"])
+for customer in sheet.loc[sheet["Invoice"] > 1800]["Customer"].unique():
+    print(customer)
